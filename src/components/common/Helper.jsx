@@ -7,5 +7,4 @@ export const allButtons = [
         button: "Firebase",
         url: "/firebase",
     },
-
 ];

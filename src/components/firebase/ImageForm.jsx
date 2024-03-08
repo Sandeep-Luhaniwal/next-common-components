@@ -1,8 +1,7 @@
 "use client"
-import { child, get, getDatabase, ref, set } from 'firebase/database';
-import Image from 'next/image';
+import { onValue, ref, set } from 'firebase/database';
+import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import React, { useState } from 'react'
 import { db } from './Firebase';
 
 const ImageForm = () => {
@@ -12,6 +11,7 @@ const ImageForm = () => {
     }
     const [formData, setFormData] = useState(userData);
     const [getImage, setGetImage] = useState("");
+    const [fetchData, setFetchData] = useState([]);
     const selectImageHandler = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -25,30 +25,38 @@ const ImageForm = () => {
     }
 
     const fromSubmitHandler = (e) => {
+        // setFetchData(true);
         if (formData.name && formData.image) {
-            set(ref(db, 'users/' + "abc"), {
-                username: formData.name,
-                profile_picture: formData.image,
+            set(ref(db, 'users/' + uuidv4()), {
+                name: formData.name,
+                image: formData.image,
             });
+            // setFetchData(false);
+
             console.log("User Data", formData)
         }
         e.preventDefault();
         setFormData(userData);
+        setGetImage();
     };
 
+    const fetchUserData = () => {
+        const starCountRef = ref(db, 'users/');
+        onValue(starCountRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const array = Object.values(data);
+                setFetchData(array);
+            }
+        });
+    }
+    useEffect(() => {
+        fetchUserData();
+    }, []);
 
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, `users/${"abc"}`)).then((snapshot) => {
-        if (snapshot.exists()) {
-            console.log("..........", snapshot.val());
-        } else {
-            console.log("No data available");
-        }
-    }).catch((error) => {
-        console.error(error);
-    });
     return (
         <>
+
             <div className='max-w-[500px] mx-auto px-6 pt-10'>
                 <form onSubmit={(e) => fromSubmitHandler(e)} className='flex flex-col gap-4 '>
                     <input
@@ -58,19 +66,36 @@ const ImageForm = () => {
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         value={formData.name}
                     />
-                    <input
-                        type="file"
-                        name=""
-                        id=""
-                        onChange={selectImageHandler}
-                    />
+                    <div className="flex justify-between relative">
+                        <input
+                            type="file"
+                            name=""
+                            id=""
+                            onChange={selectImageHandler}
+                        />
+                        {getImage &&
+                            <div className='border absolute end-0 top-1/2 rounded-xl overflow-hidden -translate-y-1/2 border-black'>
+                                <img height={60} width={60} className="h-[50px]  object-cover" src={getImage} alt="" />
+                            </div>
+                        }
+                    </div>
                     <input
                         type="submit"
-                        className='bg-red-600 px-3 py-1 text-white rounded-sm'
+                        className='bg-red-600 px-3 cursor-pointer py-1 text-white rounded-sm'
                     />
                 </form>
-                {/* <Image className='mt-10' height={400} width={400} src={getImage} alt='image' /> */}
-                <img src={getImage} alt="" className='mt-10' />
+
+
+                <table className="border-collapse w-full mt-6">
+                    <tbody className='border-collapse'>
+                        {fetchData.map((value, index) => (
+                            <tr key={index} className=''>
+                                <td className='border w-[70%] border-black p-1'>{value.name}</td>
+                                <td className='border border-black p-1'><img height={60} width={120} className='w-[120px] h-[60px]' src={value.image} alt="" /></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </>
     )
