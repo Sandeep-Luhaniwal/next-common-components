@@ -19,7 +19,8 @@ const Filter = () => {
     }, [tab]);
     return (
         <>
-            <div className="max-w-[1200px] mx-auto px-4 xl:px-0 pt-5">
+            <div className="max-w-[1200px] mx-auto px-4 xl:px-0 py-6">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl pb-4 font-semibold">Filter Button</h2>
                 <div className="flex">
                     <button
                         onClick={() => setTab("")}

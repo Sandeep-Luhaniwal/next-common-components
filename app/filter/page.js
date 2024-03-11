@@ -1,12 +1,11 @@
 import CommonButton from '@/src/components/common/CommonButton'
-import Filter from '@/src/components/filter/Filter'
-import React from 'react'
+import Filterpage from '@/src/components/filter/Filterpage'
 
 const page = () => {
     return (
         <div>
             <CommonButton />
-            <Filter />
+            <Filterpage />
         </div>
     )
 }
