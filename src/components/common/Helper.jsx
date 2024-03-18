@@ -11,4 +11,8 @@ export const allButtons = [
         button: "Accordion ",
         url: "/accordion ",
     },
+    {
+        button: "Sidebar",
+        url: "/sidebar ",
+    },
 ];
