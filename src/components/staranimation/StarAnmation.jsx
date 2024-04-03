@@ -7,10 +7,11 @@ const StarAnmation = () => {
         const createStar = () => {
             const star = document.createElement("div");
             star.className = "star";
+
             star.style.left = Math.random() * window.innerWidth + "px";
             star.style.top = Math.random() * window.innerHeight + "px";
             document.body.appendChild(star);
-
+            document.body.classList.add("overflow-hidden");
             setTimeout(() => {
                 star.remove();
             }, 5000);
