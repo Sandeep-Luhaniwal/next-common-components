@@ -23,4 +23,8 @@ export const allButtons = [
         button: "Nav Bar",
         url: "/navbar",
     },
+    {
+        button: "API",
+        url: "/api",
+    },
 ];

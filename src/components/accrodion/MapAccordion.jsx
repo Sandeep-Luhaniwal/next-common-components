@@ -27,8 +27,6 @@ const MapAccordion = () => {
                             </div>
                         )
                     })}
-
-
                 </div>
             </div>
         </>
