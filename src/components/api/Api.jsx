@@ -12,7 +12,8 @@ const Api = () => {
       .catch((error) => console.error("Error fetching dog images:", error));
   }, [])
   return (
-    <div className='max-w-[1400px] mx-auto p-6'>
+    <div className='mx-auto max-w-[1200px] px-4 xl:px-0'>
+      <h2 className='text-3xl sm:text-4xl md:text-5xl text-center text-blue-700 font-bold py-6'>API Image</h2>
       <div className="grid grid-cols-4 gap-6">
         {api.map((obj, i) => {
           return (

@@ -29,6 +29,6 @@ export const allButtons = [
     },
     {
         button: "Params Tab",
-        url: "/params",
+        url: "/paramstab",
     },
 ];

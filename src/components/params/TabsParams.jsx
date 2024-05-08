@@ -1,35 +1,29 @@
 "use client"
-import { useState, useEffect } from "react";
-import { tabData } from "./Helper";
 import { useRouter } from "next/navigation";
+import { tabData } from "./Helper";
+import { useEffect, useState } from "react";
 
-const Params = () => {
+const TabsParams = () => {
+    const [params, setParams] = useState(tabData[0].id);
     const router = useRouter();
-    const [params, setParams] = useState(() => {
-        // Check if the type is present in localStorage, otherwise use the default value
-        return localStorage.getItem("type") || tabData[0].id;
-    });
-
+    const pathname = router.pathname; // Accessing current pathname
     useEffect(() => {
-        if (router.query && router.query.type) {
-            const { type } = router.query;
-            setParams(type);
-            // Store the type in localStorage
-            localStorage.setItem("type", type);
+        const typeParam = new URLSearchParams(window.location.search).get("type");
+        if (typeParam) {
+            setParams(typeParam);
         }
-    }, [router.query]);
+    }, [pathname]); // Adding pathname to dependency array
 
-    const clickHandler = (tabName) => {
-        const value = tabName;
-        router.push(`?${value}`);
+    const clickHandler = (obj) => {
+        const value = obj.replace(/\s+/g, "-");
+        router.push(`?type=${value}`);
         setParams(value);
-        // Store the type in localStorage
-        localStorage.setItem("type", value);
     };
 
     return (
         <div>
-            <div className="max-w-[1140px] mx-auto px-4 container pt-10">
+            <div className="mx-auto max-w-[1200px] px-4 xl:px-0">
+                <h2 className='text-3xl sm:text-4xl md:text-5xl text-center text-blue-700 font-bold py-6'>Params Tab</h2>
                 <div className="flex gap-6 mb-4">
                     {tabData.map((obj, i) => (
                         <button
@@ -38,8 +32,8 @@ const Params = () => {
                             onClick={() => clickHandler(obj.id)}
                             className={`bg-blue-600 rounded-lg px-5 py-2.5 text-white capitalize hover:bg-red-800
                              duration-500 ${params === obj.id
-                                ? "bg-red-600"
-                                : ""
+                                    ? "bg-red-600"
+                                    : ""
                                 }`}
                         >{obj.tabName}</button>
                     ))}
@@ -62,4 +56,4 @@ const Params = () => {
     );
 };
 
-export default Params;
+export default TabsParams;
