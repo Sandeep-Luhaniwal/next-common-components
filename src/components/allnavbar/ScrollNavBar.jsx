@@ -1,14 +1,28 @@
+"use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 const ScrollNavBar = () => {
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <>
             <div className="bg-black">
                 <div className="max-w-[1200px] px-4 py-3 mx-auto">
                     <div className="flex text-white justify-between items-center">
                         <h1 className='text-3xl capitalize'>logo</h1>
-                        <div className="gap-5 flex">
+                        <div className="gap-5 md:flex hidden">
+                            <Link className='capitalize hover:text-blue-600 text-2xl font-semibold' href="/">Home</Link>
+                            <Link className='capitalize hover:text-blue-600 text-2xl font-semibold' href="/">firebase</Link>
+                            <Link className='capitalize hover:text-blue-600 text-2xl font-semibold' href="/">filter</Link>
+                        </div>
+
+                        <div className="md:hidden">
+                            <button onClick={() => setIsOpen(true)}>Open</button>
+                        </div>
+
+
+                        <div className={`min-h-screen bg-red-600 fixed w-full h-full top-0 flex flex-col justify-center items-center gap-5 -start-full duration-300 ${isOpen ? "!start-0" : ""}`}>
+                            <button onClick={() => { setIsOpen(false) }} className='absolute end-5 top-5'>close</button>
                             <Link className='capitalize hover:text-blue-600 text-2xl font-semibold' href="/">Home</Link>
                             <Link className='capitalize hover:text-blue-600 text-2xl font-semibold' href="/">firebase</Link>
                             <Link className='capitalize hover:text-blue-600 text-2xl font-semibold' href="/">filter</Link>

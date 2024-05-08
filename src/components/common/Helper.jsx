@@ -27,4 +27,8 @@ export const allButtons = [
         button: "API",
         url: "/api",
     },
+    {
+        button: "Params Tab",
+        url: "/params",
+    },
 ];
