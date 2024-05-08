@@ -3,6 +3,7 @@ import { onValue, ref, set } from 'firebase/database';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { db } from './Firebase';
+import Image from 'next/image';
 
 const ImageForm = () => {
     const userData = {
@@ -75,7 +76,7 @@ const ImageForm = () => {
                         />
                         {getImage &&
                             <div className='border absolute end-0 top-1/2 rounded-xl overflow-hidden -translate-y-1/2 border-black'>
-                                <img height={60} width={60} className="h-[50px]  object-cover" src={getImage} alt="" />
+                                <Image height={60} width={60} className="h-[50px]  object-cover" src={getImage} alt="" />
                             </div>
                         }
                     </div>
@@ -91,7 +92,7 @@ const ImageForm = () => {
                         {fetchData.map((value, index) => (
                             <tr key={index} className=''>
                                 <td className='border w-[70%] border-black p-1'>{value.name}</td>
-                                <td className='border border-black p-1'><img height={60} width={120} className='w-[120px] h-[60px]' src={value.image} alt="" /></td>
+                                <td className='border border-black p-1'><Image height={60} width={120} className='w-[120px] h-[60px]' src={value.image} alt="" /></td>
                             </tr>
                         ))}
                     </tbody>

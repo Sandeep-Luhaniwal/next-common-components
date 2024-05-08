@@ -15,10 +15,10 @@ export const allButtons = [
         button: "Sidebar",
         url: "/sidebar ",
     },
-    {
-        button: "Star Animation",
-        url: "/star-animation ",
-    },
+    // {
+    //     button: "Star Animation",
+    //     url: "/star-animation ",
+    // },
     {
         button: "Nav Bar",
         url: "/navbar",

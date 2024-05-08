@@ -15,7 +15,7 @@ const MapAccordion = () => {
                 <div className="max-w-[800px] mx-auto flex gap-4 flex-col">
                     {accordionData.map((value, index) => {
                         return (
-                            <div onClick={() => onClickHandler(value.id)} className=' border-blue-600 rounded-lg border overflow-hidden'>
+                            <div key={index} onClick={() => onClickHandler(value.id)} className=' border-blue-600 rounded-lg border overflow-hidden'>
                                 <div className="flex py-2 px-3 justify-between cursor-pointer">
                                     <h1 className='text-lg'>{value.title}</h1>
                                     <span className={`${activeAccordion === value.id ? "" : "before:h-[16px] before:absolute before:bg-blue-700 before:end-[11px] before:top-1/2 before:-translate-y-1/2 before:w-[2px]"} 
