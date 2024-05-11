@@ -35,4 +35,12 @@ export const allButtons = [
         button: "Scroll Nav",
         url: "/scrollnavbar",
     },
+    {
+        button: "Toggle Theme",
+        url: "/toggle-theme",
+    },
+    {
+        button: "Toggle Open",
+        url: "/toggle",
+    },
 ];
