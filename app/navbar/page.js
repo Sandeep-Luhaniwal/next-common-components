@@ -1,9 +1,9 @@
-import ScrollNavBar from '@/src/components/allnavbar/ScrollNavBar'
+import NavBar from '@/src/components/allnavbar/NavBar'
 
 const page = () => {
     return (
         <div>
-            <ScrollNavBar />
+            <NavBar/>
         </div>
     )
 }

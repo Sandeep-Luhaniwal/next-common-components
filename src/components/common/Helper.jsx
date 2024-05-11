@@ -31,4 +31,8 @@ export const allButtons = [
         button: "Params Tab",
         url: "/paramstab",
     },
+    {
+        button: "Scroll Nav",
+        url: "/scrollnavbar",
+    },
 ];
