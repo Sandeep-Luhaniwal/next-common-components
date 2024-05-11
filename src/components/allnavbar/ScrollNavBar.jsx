@@ -49,7 +49,7 @@ const ScrollNavBar = () => {
                     </div>
                 </div>
             </nav>
-            <div className="min-h-screen mt-10 bg-gray-600">
+            <div className="min-h-screen mt-4 bg-gray-600">
                 <CommonButton />
             </div>
             <div className="min-h-screen bg-green-500">ab</div>
