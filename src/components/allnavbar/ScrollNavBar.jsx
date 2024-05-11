@@ -1,6 +1,7 @@
 "use client"
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import CommonButton from '../common/CommonButton';
 
 const ScrollNavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +49,9 @@ const ScrollNavBar = () => {
                     </div>
                 </div>
             </nav>
-            <div className="min-h-screen bg-red-800">ab</div>
+            <div className="min-h-screen mt-10 bg-gray-600">
+                <CommonButton />
+            </div>
             <div className="min-h-screen bg-green-500">ab</div>
             <div className="min-h-screen bg-orange-500">ab</div>
         </>

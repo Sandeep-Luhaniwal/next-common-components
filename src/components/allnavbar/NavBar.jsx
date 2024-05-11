@@ -9,7 +9,7 @@ const NavBar = () => {
 
     return (
         <>
-            <div className="bg-black mt-32">
+            <div className="bg-black">
                 <div className="max-w-[1200px] px-4 py-3 mx-auto">
                     <div className="flex text-white justify-between items-center">
                         <h1 className='text-3xl capitalize'>logo</h1>

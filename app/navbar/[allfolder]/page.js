@@ -1,11 +1,10 @@
 import DataShow from '@/src/components/allnavbar/DataShow'
-import ScrollNavBar from '@/src/components/allnavbar/ScrollNavBar'
-import Filter from '@/src/components/filter/Filter'
-import React from 'react'
+import CommonButton from '@/src/components/common/CommonButton'
 
 const page = () => {
     return (
         <div>
+            <CommonButton />
             <DataShow />
         </div>
     )
