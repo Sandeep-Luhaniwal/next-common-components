@@ -43,4 +43,8 @@ export const allButtons = [
         button: "Toggle Open",
         url: "/toggle",
     },
+    {
+        button: "Charts",
+        url: "/charts",
+    },
 ];
